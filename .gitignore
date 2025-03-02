@@ -38,4 +38,7 @@ terraform.rc
 
 
 # Vscode
-*.code-workspace
+*.code-workspace.history
+
+# history
+.history/
