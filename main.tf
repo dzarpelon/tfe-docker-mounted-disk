@@ -11,6 +11,6 @@ module "ec2-instance" {
 }
 
 module "docker-install" {
-  source     = "./modules/docker-install"
+  source = "./modules/docker-install"
   //depends_on = [module.ec2-instance] // Ensures EC2 is created first
 }
