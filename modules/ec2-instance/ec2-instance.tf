@@ -1,4 +1,3 @@
-# IAM Role for EC2 Instance to use SSM
 resource "aws_iam_role" "ssm_role" {
   name = "${var.aws_instance_name}-ssm-role"
 
@@ -29,16 +28,14 @@ resource "aws_iam_instance_profile" "ssm_instance_profile" {
 }
 
 
-resource "aws_instance" "tfe-fdo-docker-mounted" {
-  ami                    = var.aws_ami
-  instance_type          = var.aws_instance_type
-  iam_instance_profile   = aws_iam_instance_profile.ssm_instance_profile.name
-  user_data              = file("${path.module}/data/cloudinit.tpl")
-
+resource "aws_instance" "tfe_instance" {
+  ami           = var.aws_ami
+  instance_type = var.aws_instance_type
+  user_data     = var.user_data
   tags = {
-    Name  = var.aws_instance_name,
+    Name  = var.aws_instance_name
     owner = var.aws_owner
   }
+  iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
 }
-
 
