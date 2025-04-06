@@ -27,3 +27,8 @@ variable "aws_instance_name" {
   description = "Name tag for the EC2 instance."
   type        = string
 }
+
+variable "certbot_email" {
+  description = "Email used for certbot notifications"
+  type        = string
+}
