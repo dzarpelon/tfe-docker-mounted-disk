@@ -1,1 +1,1 @@
-// add here any outputs needed for the project to show during 'terraform plan' or 'terraform apply'
+// Removed the tfe_enterprise_user_data output as it is unnecessary.

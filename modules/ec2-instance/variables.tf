@@ -18,3 +18,8 @@ variable "user_data" {
   description = "The cloud-init user_data for the EC2 instance."
   type        = string
 }
+
+variable "disk_size" {
+  description = "The size of the root EBS volume in GiB."
+  type        = number
+}
