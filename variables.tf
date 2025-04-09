@@ -48,3 +48,23 @@ variable "disk_size" {
   type        = number
   default     = 80
 }
+
+variable "route53_zone_id" {
+  description = "The ID of the Route 53 hosted zone."
+  type        = string
+}
+
+variable "route53_zone_name" {
+  description = "The name of the Route 53 hosted zone."
+  type        = string
+}
+
+variable "encryption_password" {
+  description = "The encryption password for Terraform Enterprise."
+  type        = string
+}
+
+variable "initial_user_password" {
+  description = "The password for the initial admin user."
+  type        = string
+}
