@@ -33,6 +33,12 @@ module "ec2-instance" {
   disk_size              = var.disk_size
   disk_type              = var.disk_type
   vpc_security_group_ids = [module.security_group.tfe_security_group_id]
+  tfe_license            = var.tfe_license
+  tfe_version            = var.tfe_version
+  encryption_password    = var.encryption_password
+  certbot_email          = var.certbot_email
+  initial_user_password  = var.initial_user_password
+  route53_zone_name      = var.route53_zone_name
 }
 
 module "route53" {

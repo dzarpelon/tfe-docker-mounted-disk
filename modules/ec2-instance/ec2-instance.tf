@@ -3,6 +3,25 @@ module "ssm" {
   aws_instance_name = var.aws_instance_name
 }
 
+data "cloudinit_config" "merged_config" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init.tpl", {
+      tfe_license         = var.tfe_license,
+      tfe_version         = var.tfe_version,
+      certbot_email       = var.certbot_email,
+      tfe_hostname        = "${var.aws_instance_name}.${var.route53_zone_name}",
+      encryption_password = var.encryption_password,
+      aws_instance_name   = var.aws_instance_name,
+      route53_zone_name   = var.route53_zone_name,
+      initial_user_password = var.initial_user_password
+    })
+  }
+}
+
 resource "aws_instance" "tfe_instance" {
   ami                    = var.aws_ami
   instance_type          = var.aws_instance_type

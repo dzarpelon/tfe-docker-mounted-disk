@@ -108,4 +108,4 @@ Here are the components of the system:
 - The SSM (AWS Systems Management) module for a secure remote connection to the system. Check more info on how this works on [What is AWS Systems Manager?](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
 - The EC2 instance, this is an Ubuntu system.
 - The Route53 module creates the A record for our instance, we do need to have the domain pre-criated for it to work properly.
-- Finaly, the cloudinit module has the installation of Docker, Docker-compose, the SSL certificates creation for TFE and then installs TFE and create the admin user.
+- Finaly, the cloudinit inside the ec2-instance module has the installation of Docker, Docker-compose, the SSL certificates creation for TFE and then installs TFE and create the admin user.

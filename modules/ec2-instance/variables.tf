@@ -35,3 +35,36 @@ variable "vpc_security_group_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "tfe_license" {
+  description = "Terraform Enterprise license."
+  type        = string
+  sensitive   = true
+}
+
+variable "tfe_version" {
+  description = "The version of Terraform Enterprise to deploy."
+  type        = string
+}
+
+variable "certbot_email" {
+  description = "Email used for certbot notifications."
+  type        = string
+}
+
+variable "route53_zone_name" {
+  description = "The name of the Route 53 hosted zone."
+  type        = string
+}
+
+variable "encryption_password" {
+  description = "The encryption password for Terraform Enterprise."
+  type        = string
+  sensitive   = true
+}
+
+variable "initial_user_password" {
+  description = "The password for the initial admin user."
+  type        = string
+  sensitive   = true
+}
