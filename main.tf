@@ -7,7 +7,6 @@ data "cloudinit_config" "merged_config" {
     content = templatefile("${path.module}/modules/ec2-instance/cloud-init.tpl", {
       tfe_license           = var.tfe_license,
       tfe_version           = var.tfe_version,
-      certbot_email         = var.certbot_email,
       tfe_hostname          = "${var.aws_instance_name}.${var.route53_zone_name}",
       encryption_password   = var.encryption_password,
       aws_instance_name     = var.aws_instance_name,
@@ -36,7 +35,6 @@ module "ec2-instance" {
   tfe_license            = var.tfe_license
   tfe_version            = var.tfe_version
   encryption_password    = var.encryption_password
-  certbot_email          = var.certbot_email
   initial_user_password  = var.initial_user_password
   route53_zone_name      = var.route53_zone_name
 }
