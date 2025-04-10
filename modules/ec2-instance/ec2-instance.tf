@@ -15,7 +15,7 @@ resource "aws_instance" "tfe_instance" {
   iam_instance_profile = module.ssm.ssm_instance_profile
   root_block_device {
     volume_size = var.disk_size
-    volume_type = "gp3"
+    volume_type = var.disk_type
   }
 }
 

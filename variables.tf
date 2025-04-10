@@ -6,13 +6,13 @@ variable "aws_region" {
 variable "aws_credentials_profile" {
   description = "The AWS CLI profile to use."
   type        = string
-  default = "default"
+  default     = "default"
 }
 
 variable "aws_ami" {
   description = "The AMI for the EC2 instance."
   type        = string
-  default = "ami-07eef52105e8a2059" # Ubuntu 24.04
+  default     = "ami-07eef52105e8a2059" # Ubuntu 24.04
 }
 
 variable "aws_instance_type" {
@@ -38,7 +38,7 @@ variable "certbot_email" {
 variable "tfe_license" {
   description = "Terraform Enterprise license. This must be set via an environment variable (e.g., TF_VAR_tfe_license)."
   type        = string
-  sensitive = true
+  sensitive   = true
 
 }
 
@@ -66,12 +66,19 @@ variable "route53_zone_name" {
 variable "encryption_password" {
   description = "The encryption password for Terraform Enterprise."
   type        = string
-  sensitive = true
+  sensitive   = true
 
 }
+
+variable "disk_type" {
+  description = "the AWS disk type to be used on this instance"
+  type        = string
+  default     = "gp3"
+}
+
 
 variable "initial_user_password" {
   description = "The password for the initial admin user."
   type        = string
-  sensitive = true
+  sensitive   = true
 }

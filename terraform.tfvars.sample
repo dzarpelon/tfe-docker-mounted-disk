@@ -13,6 +13,7 @@ certbot_email     = "john.doe@example.com"
 
 tfe_version       = "v202503-1"
 disk_size         = 80 #this is in GB
+disk_type = "gp3" # check https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html for the different types
 
 route53_zone_id   = "Z1234567890ABCDEF" 
 route53_zone_name = "example.com"

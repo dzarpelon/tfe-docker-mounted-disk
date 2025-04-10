@@ -5,13 +5,13 @@ data "cloudinit_config" "merged_config" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/modules/cloudinit/cloud-init.tpl", {
-      tfe_license         = var.tfe_license,
-      tfe_version         = var.tfe_version,
-      certbot_email       = var.certbot_email,
-      tfe_hostname        = "${var.aws_instance_name}.${var.route53_zone_name}",
-      encryption_password = var.encryption_password,
-      aws_instance_name   = var.aws_instance_name,
-      route53_zone_name   = var.route53_zone_name,
+      tfe_license           = var.tfe_license,
+      tfe_version           = var.tfe_version,
+      certbot_email         = var.certbot_email,
+      tfe_hostname          = "${var.aws_instance_name}.${var.route53_zone_name}",
+      encryption_password   = var.encryption_password,
+      aws_instance_name     = var.aws_instance_name,
+      route53_zone_name     = var.route53_zone_name,
       initial_user_password = var.initial_user_password
     })
   }
@@ -31,6 +31,7 @@ module "ec2-instance" {
   aws_instance_name      = var.aws_instance_name
   user_data              = data.cloudinit_config.merged_config.rendered
   disk_size              = var.disk_size
+  disk_type              = var.disk_type
   vpc_security_group_ids = [module.security_group.tfe_security_group_id]
 }
 

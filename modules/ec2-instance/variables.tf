@@ -24,6 +24,12 @@ variable "disk_size" {
   type        = number
 }
 
+variable "disk_type" {
+  description = "the AWS disk type to be used on this instance"
+  type        = string
+  default     = "gp3"
+}
+
 variable "vpc_security_group_ids" {
   description = "List of security group IDs to associate with the instance."
   type        = list(string)
