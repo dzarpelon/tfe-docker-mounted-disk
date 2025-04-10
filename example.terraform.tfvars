@@ -1,6 +1,6 @@
 # AWS variables setup
-aws_region              = "<your-aws-region>"
-aws_credentials_profile = "<your-aws-credentials-profile>"
+aws_region              = "<your-aws-region>" # Example: eu-central-1
+aws_credentials_profile = "<your-aws-credentials-profile>" # Example: default
 
 # EC2 instance variables
 aws_ami           = "<your-aws-ami-id>" # Example: ami-12345678
@@ -12,10 +12,12 @@ aws_instance_name = "<your-instance-name>" # Example: my-tfe-instance
 certbot_email     = "<your-email-address>" # Example: john.doe@example.com
 
 tfe_version       = "<your-tfe-version>" # Example: v202503-1
-disk_size         = <your-disk-size> # Example: 80
+disk_size         = <your-disk-size> # Example: 80, this is in GB
 
 route53_zone_id   = "<your-route53-zone-id>" # Example: Z1234567890ABCDEF
 route53_zone_name = "<your-route53-zone-name>" # Example: example.com
 
-encryption_password = "<your-encryption-password>" 
-initial_user_password = "<your-initial-user-password>" # must be at least 10 characters long
+encryption_password = "<your-encryption-password>" # this is the encryption password used by TFE, make sure it's a secure one and do not share this publicly.
+initial_user_password = "<your-initial-user-password>" # the initial admin user password must be at least 10 characters long. As any credential, do not share this and make sure it's a safe one.
+tfe_license = "<your-tfe-license>"
+
