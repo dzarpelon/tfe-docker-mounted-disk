@@ -2,21 +2,19 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = " ~> 5.89"
-    }
-    cloudinit = {
-      source  = "hashicorp/cloudinit"
-      version = " ~> 2.3"
+      version = "~> 5.89"
     }
   }
 }
 
-// configure aws provider
 provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_credentials_profile
-}
+  region = var.aws_region
 
-provider "cloudinit" {
-  # No special configuration needed unless desired.
+  # Use credentials file if aws_credentials_type is "profile"
+  profile = var.aws_credentials_type == "profile" ? var.aws_credentials_profile : null
+
+  # Use environment variables if aws_credentials_type is "env"
+  access_key = var.aws_credentials_type == "env" ? var.AWS_ACCESS_KEY_ID : null
+  secret_key = var.aws_credentials_type == "env" ? var.AWS_SECRET_ACCESS_KEY : null
+  token      = var.aws_credentials_type == "env" ? var.AWS_SESSION_TOKEN : null
 }

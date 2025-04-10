@@ -35,8 +35,29 @@ Here are those:
 
 1. Login to Doormat using the cli:
    `doormat login -f`
-2. Set the AWS credentials profile with the latest creadentials from Doormat:
-   `doormat aws cred-file add-profile --account <your_aws_account_from_doormat> --set-default` this will set the `~/.aws/credentials` file with the proper credentials for your AWS environment.
+2. Set the AWS credentials with the latest creadentials from Doormat:
+
+   1. The project can make use either from the AWS credentials profile or ennvironment variables set on the current shell (this shell must be the same as the one you run Terraform).
+   2. To do that, you can setthe variable `aws_credentials_type` in the `terraform.tfvars file either to "profile" or "env"`
+
+      1. For the profile option, via Doormat CLI you can set that with the following command:
+         `doormat aws cred-file add-profile --account <your_aws_account_from_doormat> --set-default` this will set the `~/.aws/credentials` file with the proper credentials for your AWS environment.
+      2. If you use the "env" option, you can either manually set the variables or use Doormat CLI for that.
+
+         1. Doormat variables set:
+
+            ```
+            eval $(doormat aws export --account <your_aws_account>)
+            ```
+
+         2. Manual variables set:
+
+            ```
+            export AWS_ACCESS_KEY_ID=<aws_access_key_id>
+            export AWS_SECRET_ACCESS_KEY=<aws_access_key>
+            export AWS_SESSION_TOKEN=<aws_session_token>
+            ```
+
 3. Clone this repository to your system.
 4. After cloning the repo, go to the base folder of it and initiatialize the project by running `terraform init`, this will download the necessary plugins and prepare the environment for the Terraform commands.
 
