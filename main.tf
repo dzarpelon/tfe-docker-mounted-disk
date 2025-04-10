@@ -18,7 +18,7 @@ data "cloudinit_config" "merged_config" {
 }
 
 module "security_group" {
-  source                     = "./modules/security-group/"
+  source                     = "./modules/security-group-in-80-443-out-all/"
   security_group_name        = "tfe-security-group"
   security_group_description = "Security group for Terraform Enterprise instance"
 }

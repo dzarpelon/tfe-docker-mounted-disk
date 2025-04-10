@@ -1,5 +1,5 @@
-resource "aws_security_group" "tfe_security_group" {
-  name        = "tfe-security-group"
+resource "aws_security_group" "security-group-in-80-443-out-all" {
+  name        = "security-group-in-80-443-out-all"
   description = "Security group for Terraform Enterprise instance"
 
   ingress {
