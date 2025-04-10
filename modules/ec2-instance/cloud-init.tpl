@@ -81,7 +81,7 @@ runcmd:
     done
   - echo "${tfe_license}" | docker login --username terraform images.releases.hashicorp.com --password-stdin
   - docker pull images.releases.hashicorp.com/hashicorp/terraform-enterprise:${tfe_version}
-  - certbot certonly --standalone --non-interactive --agree-tos --email ${certbot_email} -d ${aws_instance_name}.${route53_zone_name}
+  - certbot certonly --standalone --non-interactive --agree-tos --register-unsafely-without-email -d ${aws_instance_name}.${route53_zone_name}
   - mkdir -p /etc/ssl/private/terraform-enterprise
   - cp /etc/letsencrypt/live/${aws_instance_name}.${route53_zone_name}/cert.pem /etc/ssl/private/terraform-enterprise/cert.pem
   - cp /etc/letsencrypt/live/${aws_instance_name}.${route53_zone_name}/privkey.pem /etc/ssl/private/terraform-enterprise/key.pem
@@ -127,7 +127,6 @@ runcmd:
     cat <<EOF > /opt/tfe/payload.json
     {
       "username": "admin",
-      "email": "${certbot_email}",
       "password": "${initial_user_password}"
     }
     EOF

@@ -46,12 +46,6 @@ variable "tfe_version" {
   description = "The version of Terraform Enterprise to deploy."
   type        = string
 }
-
-variable "certbot_email" {
-  description = "Email used for certbot notifications."
-  type        = string
-}
-
 variable "route53_zone_name" {
   description = "The name of the Route 53 hosted zone."
   type        = string

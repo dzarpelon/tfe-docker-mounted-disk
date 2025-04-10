@@ -36,11 +36,6 @@ variable "aws_instance_name" {
   type        = string
 }
 
-variable "certbot_email" {
-  description = "Email used for certbot notifications"
-  type        = string
-}
-
 variable "tfe_license" {
   description = "Terraform Enterprise license. This must be set via an environment variable (e.g., TF_VAR_tfe_license)."
   type        = string
