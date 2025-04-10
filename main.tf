@@ -4,7 +4,7 @@ data "cloudinit_config" "merged_config" {
 
   part {
     content_type = "text/cloud-config"
-    content = templatefile("${path.module}/modules/cloudinit/cloud-init.tpl", {
+    content = templatefile("${path.module}/modules/ec2-instance/cloud-init.tpl", {
       tfe_license           = var.tfe_license,
       tfe_version           = var.tfe_version,
       certbot_email         = var.certbot_email,
