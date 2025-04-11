@@ -10,7 +10,6 @@ aws_instance_type = "t3.medium"
 # Tags
 aws_owner         = "example-owner" # Example owner tag
 aws_instance_name = "example-instance-name"
-certbot_email     = "example@example.com"
 
 tfe_version       = "v202503-1"
 disk_size         = 80 # this is in GB
@@ -21,5 +20,6 @@ route53_zone_name = "example.com"
 
 encryption_password   = "example-encryption-password" # Example encryption password
 initial_user_password = "exampleP@ssw0rd" # Example initial admin user password
+initial_user_email = "john.doe@example.com"
 tfe_license           = "example-tfe-license" # Example TFE license
 
