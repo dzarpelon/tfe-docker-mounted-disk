@@ -58,8 +58,31 @@ Here are those:
             export AWS_SESSION_TOKEN=<aws_session_token>
             ```
 
-3. Clone this repository to your system.
-4. After cloning the repo, go to the base folder of it and initiatialize the project by running `terraform init`, this will download the necessary plugins and prepare the environment for the Terraform commands.
+3. Clone this repository to your system. To clone the repo, you can run the command below on your local system:
+   `git clone https://github.com/dzarpelon/tfe-docker-mounted-disk.git`
+4. After cloning the repo, we will run a `terraform init`, this will download the necessary plugins and prepare the environment for the Terraform commands.
+
+   ```
+   # cd tfe-docker-mounted-disk
+   # terraform init
+   Initializing the backend...
+   Initializing modules...
+   Initializing provider plugins...
+   - Reusing previous version of hashicorp/aws from the dependency lock file
+   - Reusing previous version of hashicorp/cloudinit from the dependency lock file
+   - Using previously-installed hashicorp/aws v5.94.1
+   - Using previously-installed hashicorp/cloudinit v2.3.6
+
+   Terraform has been successfully initialized!
+
+   You may now begin working with Terraform. Try running "terraform plan" to see
+   any changes that are required for your infrastructure. All Terraform commands
+   should now work.
+
+   If you ever set or change modules or backend configuration for Terraform,
+   rerun this command to reinitialize your working directory. If you forget, other
+   commands will detect it and remind you to do so if necessary.
+   ```
 
 With the above done we should be good to define the needed variables and then apply the deployment.
 
