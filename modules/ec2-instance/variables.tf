@@ -62,3 +62,8 @@ variable "initial_user_password" {
   type        = string
   sensitive   = true
 }
+
+variable "initial_user_email" {
+  description = "The email to be used for the initial user creation"
+  type = string
+}

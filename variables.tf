@@ -82,6 +82,10 @@ variable "initial_user_password" {
   type        = string
   sensitive   = true
 }
+variable "initial_user_email" {
+  description = "The email to be used for the initial user creation"
+  type = string
+}
 
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS Access Key ID for environment variable authentication."

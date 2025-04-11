@@ -1,5 +1,5 @@
 module "ssm" {
-  source            = "../ssm"
+  source            = "git::https://github.com/dzarpelon/tf-aws-ssm-module.git?ref=main"
   aws_instance_name = var.aws_instance_name
 }
 
@@ -16,7 +16,8 @@ data "cloudinit_config" "merged_config" {
       encryption_password   = var.encryption_password,
       aws_instance_name     = var.aws_instance_name,
       route53_zone_name     = var.route53_zone_name,
-      initial_user_password = var.initial_user_password
+      initial_user_password = var.initial_user_password,
+      initial_user_email = var.initial_user_email
     })
   }
 }

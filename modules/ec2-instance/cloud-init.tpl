@@ -127,7 +127,8 @@ runcmd:
     cat <<EOF > /opt/tfe/payload.json
     {
       "username": "admin",
-      "password": "${initial_user_password}"
+      "password": "${initial_user_password}",
+      "email" : "${initial_user_email}"
     }
     EOF
 
@@ -138,27 +139,27 @@ runcmd:
       https://${aws_instance_name}.${route53_zone_name}/admin/initial-admin-user?token=$IACT_TOKEN)
 
     # Log the response from the admin user creation API for debugging
-    echo "Admin user creation response: $CREATE_USER_RESPONSE" >> /var/log/cloud-init-debug.log
+    echo "Admin user creation response: $CREATE_USER_RESPONSE"  
 
     # Extract the token from the response
     USER_TOKEN=$(echo "$CREATE_USER_RESPONSE" | jq -r '.token')
 
     # Check if the token was retrieved successfully
     if [ -z "$USER_TOKEN" ]; then
-      echo "Failed to create the initial admin user. Response: $CREATE_USER_RESPONSE" >> /var/log/cloud-init-debug.log
+      echo "Failed to create the initial admin user. Response: $CREATE_USER_RESPONSE"  
       exit 1
     fi
 
     # Log the HTTP status code check for user creation
-    echo "Checking user creation status with token: $USER_TOKEN" >> /var/log/cloud-init-debug.log
+    echo "Checking user creation status with token: $USER_TOKEN"  
     USER_CHECK=$(curl -k -s -o /dev/null -w "%%{http_code}" \
       --header "Authorization: Bearer $USER_TOKEN" \
       https://${aws_instance_name}.${route53_zone_name}/api/v2/admin/users)
 
-    echo "User creation HTTP status: $USER_CHECK" >> /var/log/cloud-init-debug.log
+    echo "User creation HTTP status: $USER_CHECK"  
 
     if [ "$USER_CHECK" -eq "200" ]; then
-      echo "Initial admin user created successfully." >> /var/log/cloud-init-debug.log
+      echo "Initial admin user created successfully."  
     else
-      echo "Failed to create the initial admin user. HTTP status: $USER_CHECK" >> /var/log/cloud-init-debug.log
+      echo "Failed to create the initial admin user. HTTP status: $USER_CHECK"  
     fi
